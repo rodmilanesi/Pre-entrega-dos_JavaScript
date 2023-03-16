@@ -31,9 +31,14 @@ productos.forEach((product) => {
       precio: product.precio,
     });
   });
+
+  // console.log(carrito);
 });
 
 verCarrito.addEventListener("click", () => {
+  modalContainer.innerHTML = "";
+  modalContainer.style.display = "flex";
+  verCarrito.innerHTML = "";
   const modalHeader = document.createElement("div");
   modalHeader.className = "modal-header";
   modalHeader.innerHTML = `
@@ -41,11 +46,36 @@ verCarrito.addEventListener("click", () => {
   `;
   modalContainer.append(modalHeader);
 
-  const modalExit = document.createElement("div");
-  modalExit.innerHTML = `
-  <img src = "./asset/img/cerrar.png" alt="boton cerrar">
-  `;
+  const modalExit = document.createElement("h2");
+  modalExit.innerText = `X`;
   modalExit.className = "modal-header-button";
 
+  modalExit.addEventListener("click", () => {
+    modalContainer.style.display = "none";
+  });
+
   modalHeader.append(modalExit);
+
+  carrito.forEach((product) => {
+    let carritoContent = document.createElement("div");
+    carritoContent.className = "modal-content";
+    carritoContent.innerHTML = `
+    <img src="${product.img}">
+    <h3>${product.nombre}</h3>
+    <p class = "precio-anclaje">$ ${product.precioReferencia}</p>
+    <p>$ ${product.precio}</p>
+    `;
+
+    modalContainer.append(carritoContent);
+  });
+
+  const totalReferencia = carrito.reduce((ac, e) => ac + e.precioReferencia, 0);
+  const total = carrito.reduce((acc, el) => acc + el.precio, 0);
+
+  const totalAnclaje = document.createElement("div");
+  totalAnclaje.className = "total-anclaje";
+  totalAnclaje.innerHTML = `<p class = "precio-anclaje">Valor Referencia: $ ${totalReferencia}</p>
+  <p>Total a Pagar: $ ${total}</p>
+  `;
+  modalContainer.append(totalAnclaje);
 });

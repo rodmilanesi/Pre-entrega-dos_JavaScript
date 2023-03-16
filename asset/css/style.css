@@ -12,8 +12,8 @@ body {
 .navbar {
     display: flex;
     justify-content: space-between;
-    height: 15vh;
-    background-color: #14213d;
+    height: 100px;
+    background-color: #10002b;
 
 }
 .navbar h1 {
@@ -64,4 +64,49 @@ cursor: pointer;
     opacity: .7;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 
+}
+
+
+.container-setup-products {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: auto;
+    gap: 15px
+
+}
+.tarjetas{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 300px;
+    margin: 20px;
+    text-align: center;
+}
+.tarjetas h3{
+    font-size:25px;
+    margin-top: 5px;
+
+}
+
+.tarjetas > img {
+    width: 90%;
+    height: 250px;
+    /* background-image: cover ; */
+}
+.price {
+    color: #240046;
+    font-size: 22px;
+    margin: 0;
+    margin-bottom: 5px;
+}
+.precio-anclaje {
+    font-weight: 200;
+    color: red;
+    text-decoration: line-through;
+    margin: 0;
+}
+.tarjetas button {
+    margin: 10px;
+}
+.tarjetas button:hover{
+    opacity: .7;
 }

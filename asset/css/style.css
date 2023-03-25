@@ -115,7 +115,7 @@ cursor: pointer;
     width: 80%;
     margin: 0 10%;
     margin-bottom: 30px;
-    max-height: 85vh;
+    max-height: 78vh;
     color: #e0aaff;
     background-color: #10002b;
     display: flex;
@@ -128,7 +128,7 @@ cursor: pointer;
     scrollbar-color: none;
     opacity: .9;
     border-radius: 20px;
-    border: solid .5px #c77dff;
+    /* border: solid .5px #c77dff; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.9);
     
 }
@@ -153,12 +153,13 @@ cursor: pointer;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    width: 70%;
+    width: 90%;
     margin: 10px;
     padding-bottom: 20px;
 }
 .modal-content h3 {
     font-size: 20px;
+    max-width: 150px;
 }
 .modal-content p {
     margin: 0;
@@ -180,4 +181,42 @@ cursor: pointer;
     cursor: pointer;
     width: 5px;
     height: auto;
+}
+
+.dlt-product {
+cursor: pointer;
+}
+
+.conteo-carrito {
+    background-color: rgba(255, 0, 0, 0.765);
+    color: #FFF;
+    /* box-shadow: 0 2px 8px 0 rgba(243, 6, 6, 0.4); */
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 12px;
+    padding: 2px;
+    bottom: 38px;
+    right: 14px;
+    position: absolute;
+    display: none;
+}
+
+.quantity {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+button{
+    background-color: white;
+    overflow: hidden;
+    border: none;
+    border-radius: 30%;
+    transition: .5s;
+}
+button:hover{
+    box-shadow: 0 0 10px #a945c7, 0 0 40px #a945c7, 0 0 80px #a945c7
 }

@@ -53,19 +53,11 @@ const pushCarrito = () => {
       pushCarrito();
       saveLocal();
     });
-
+    //Eliminar productos
     let dlt = carritoContent.querySelector(".dlt-product");
     dlt.addEventListener("click", () => {
       dltProduct(product.id);
     });
-
-    //Btn Eliminador de productos
-    //   let dlt = document.createElement("span");
-    //   dlt.innerText = "🗑️";
-    //   dlt.className = "dlt-product";
-    //   carritoContent.append(dlt);
-
-    //   dlt.addEventListener("click", dltProduct);
   });
 
   const totalReferencia = carrito.reduce(

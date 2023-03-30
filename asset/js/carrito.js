@@ -1,4 +1,4 @@
-const pushCarrito = () => {
+const modalContainerHTML = () => {
   modalContainer.innerHTML = "";
   modalContainer.style.display = "flex";
   verCarrito.innerHTML = "";
@@ -18,24 +18,36 @@ const pushCarrito = () => {
   });
 
   modalHeader.append(modalExit);
-  //Creador de productos en carrito
+};
+
+const recorrerCarrito = () => {
   carrito.forEach((product) => {
     let carritoContent = document.createElement("div");
     carritoContent.className = "modal-content";
     carritoContent.innerHTML = `
-      <img src="${product.img}">
-      <h3>${product.nombre}</h3>
-      <p class = "precio-anclaje">$ ${product.precioReferencia}</p>
-      <p>$ ${product.precio}</p>
+      <img src="${product.img}"/>
+      <h3 class = "nombre_producto">${product.nombre}</h3>
+      <div class = "precio_producto">
+        <p>Precio Producto</p>
+        <p class = "precio-anclaje">$ ${product.precioReferencia}</p>
+      </div>
+      <div>
+        <p>Precio Oferta</p>
+        <p>$ ${product.precio}</p>
+      </div>
         <div class = "quantity">
-          <button class= "restar"> - </button>
-          <p>Cantidad: ${product.cantidad}</p>
-          <button class= "sumar"> + </button>
+          <p>Cantidad: </p>
+          <div class = quantity-btn>
+            <button class= "restar btn_operation"> - </button>
+            <p>${product.cantidad}</p>
+            <button class= "sumar btn_operation"> + </button>
+          </div>
         </div> 
-      <p>SubTotal: $${product.cantidad * product.precio}</p>
+      <p class = "subtotal-p">SubTotal: $${
+        product.cantidad * product.precio
+      }</p>
       <span class = "dlt-product"> 🗑️ </span>
       `;
-
     modalContainer.append(carritoContent);
 
     //Sumar y Restar productos desde el carrito
@@ -59,7 +71,9 @@ const pushCarrito = () => {
       dltProduct(product.id);
     });
   });
+};
 
+const sumarCarrito = () => {
   const totalReferencia = carrito.reduce(
     (ac, e) => ac + e.precioReferencia * e.cantidad,
     0
@@ -72,6 +86,65 @@ const pushCarrito = () => {
     <p>Total a Pagar: $ ${total}</p>
     `;
   modalContainer.append(totalAnclaje);
+};
+const pushCarrito = () => {
+  modalContainerHTML();
+  recorrerCarrito();
+  sumarCarrito();
+  // carrito.forEach((product) => {
+  //   let carritoContent = document.createElement("div");
+  //   carritoContent.className = "modal-content";
+  //   carritoContent.innerHTML = `
+  //     <img src="${product.img}>"
+  //     <h3>${product.nombre}</h3>
+  //     <p class = "precio-anclaje">$ ${product.precioReferencia}</p>
+  //     <p>$ ${product.precio}</p>
+  //       <div class = "quantity">
+  //         <button class= "restar btn_operation"> - </button>
+  //         <p>Cantidad: ${product.cantidad}</p>
+  //         <button class= "sumar btn_operation"> + </button>
+  //       </div>
+  //     <p class = "subtotal-p">SubTotal: $${
+  //       product.cantidad * product.precio
+  //     }</p>
+  //     <span class = "dlt-product"> 🗑️ </span>
+  //     `;
+  //   modalContainer.append(carritoContent);
+
+  //   //Sumar y Restar productos desde el carrito
+  //   let restar = carritoContent.querySelector(".restar");
+  //   restar.addEventListener("click", () => {
+  //     if (product.cantidad !== 1) {
+  //       product.cantidad--;
+  //     }
+  //     pushCarrito();
+  //     saveLocal();
+  //   });
+  //   let sumar = carritoContent.querySelector(".sumar");
+  //   sumar.addEventListener("click", () => {
+  //     product.cantidad++;
+  //     pushCarrito();
+  //     saveLocal();
+  //   });
+  //   //Eliminar productos
+  //   let dlt = carritoContent.querySelector(".dlt-product");
+  //   dlt.addEventListener("click", () => {
+  //     dltProduct(product.id);
+  //   });
+  // });
+
+  // const totalReferencia = carrito.reduce(
+  //   (ac, e) => ac + e.precioReferencia * e.cantidad,
+  //   0
+  // );
+  // const total = carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0);
+
+  // const totalAnclaje = document.createElement("div");
+  // totalAnclaje.className = "total-anclaje";
+  // totalAnclaje.innerHTML = `<p class = "precio-anclaje">Valor Referencia: $ ${totalReferencia}</p>
+  //   <p>Total a Pagar: $ ${total}</p>
+  //   `;
+  // modalContainer.append(totalAnclaje);
 };
 
 verCarrito.addEventListener("click", pushCarrito);

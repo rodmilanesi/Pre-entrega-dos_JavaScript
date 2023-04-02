@@ -2,6 +2,7 @@ const shopContainer = document.getElementById("shopContainer");
 const verCarrito = document.getElementById("verCarrito");
 const modalContainer = document.getElementById("modalContainer");
 const conteoCarrito = document.getElementById("conteoCarrito");
+const irAPagar = document.getElementById("pagar");
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
